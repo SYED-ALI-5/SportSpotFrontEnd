@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./Components/Navbar";
+import AuthPage from "./Components/AuthPage";
+import Home from "./Components/Home";
+import React, { useState } from "react";
+import Footer from "./Components/Footer";
+import Ground from "./Components/Ground";
 
 function App() {
+  const [authMode, setAuthMode] = useState("SignUp");
+
+  const toggleAuthMode = (mode) => {
+    setAuthMode(mode);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Navbar
+          title="Sport Spot"
+          authMode={authMode}
+          toggleAuthMode={toggleAuthMode}
+        />
+        <Home />
+        <Routes>
+          <Route
+            path="/authpage"
+            element={
+              <AuthPage authMode={authMode} toggleAuthMode={toggleAuthMode} />
+            }
+          />
+          <Route path="/ground" element={<Ground />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </>
   );
 }
 
