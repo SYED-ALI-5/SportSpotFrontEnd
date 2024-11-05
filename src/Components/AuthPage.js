@@ -10,8 +10,8 @@ export default function AuthPage(props) {
 
   const handleSubmit = async () => {
     const endpoint = props.authMode === "SignUp" 
-      ? "http://127.0.0.1:8000/auth/signup" 
-      : "http://127.0.0.1:8000/auth/login";
+      ? "http://127.0.0.1:8080/auth/signup" 
+      : "http://127.0.0.1:8080/auth/login";
   
     const data = props.authMode === "SignUp"
       ? { username: name, email, password }
