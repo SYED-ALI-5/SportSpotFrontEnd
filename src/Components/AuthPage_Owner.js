@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
-import emailjs from "emailjs-com";
 import auth_bg from "../Assets/Owner_Auth_Bg.png";
+import axios from "axios"; // Axios for making HTTP requests
 
 export default function AuthPage_Owner() {
   const [formData, setFormData] = useState({
@@ -45,26 +45,49 @@ export default function AuthPage_Owner() {
   };
 
   const handleSubmit = useCallback(
-    (e) => {
+    async (e) => {
       e.preventDefault();
       const formErrors = validate();
       if (Object.keys(formErrors).length > 0) {
         setErrors(formErrors);
       } else {
-        console.log("Form Submitted", formData);
+        try {
+          // Creating a FormData object to handle file uploads and text data
+          const data = new FormData();
+          for (const key in formData) {
+            data.append(key, formData[key]);
+          }
 
-        setFormData({
-          name: "",
-          phoneNumber: "",
-          email: "",
-          password: "",
-          stadiumName: "",
-          stadiumAddress: "",
-          aim: "",
-          photo: null,
-        });
-        setErrors({});
-        alert("Your request for joining is under observation.");
+          // Send POST request to the backend API
+          const response = await axios.post(
+            "http://localhost:5000/api/owners",
+            data,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          );
+
+          console.log("Form Submitted Successfully:", response.data);
+          alert("Your request for joining is under observation.");
+
+          // Reset form fields
+          setFormData({
+            name: "",
+            phoneNumber: "",
+            email: "",
+            password: "",
+            stadiumName: "",
+            stadiumAddress: "",
+            aim: "",
+            photo: null,
+          });
+          setErrors({});
+        } catch (error) {
+          console.error("Error submitting form:", error);
+          alert("Failed to submit. Please try again.");
+        }
       }
     },
     [formData]
