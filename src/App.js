@@ -1,9 +1,10 @@
-import "./App.css";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
 import Navbar from "./Components/Navbar";
 import AuthPage from "./Components/AuthPage";
+import AuthOwner from "./Components/AuthPage_Owner";
 import Home from "./Components/Home";
-import React, { useState } from "react";
 import Footer from "./Components/Footer";
 import Ground from "./Components/Ground";
 

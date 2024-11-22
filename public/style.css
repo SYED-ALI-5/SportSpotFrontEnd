@@ -1000,35 +1000,6 @@ button[disabled] {
   text-align: center;
 }
 
-.revenue h3 {
-  color: #55ad9b;
-  font-size: 30px;
-  font-weight: 600;
-  margin: 0;
-  padding-top: 10px;
-  width: 100%;
-  text-align: center;
-}
-
-.revenue-data {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  flex-grow: 1; /* Ensures it fills space between h2 and h3 */
-  justify-content: center;
-}
-
-.revenue-data-specific {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  padding: 10px 0;
-  border-bottom: 2px solid #55ad9b; /* Removed border-bottom here */
-}
-
 .revenue-data-specific span {
   color: #317165;
   font-size: 20px;
@@ -1052,16 +1023,6 @@ button[disabled] {
   color: red;
 }
 
-.edit-ground-details {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  border: 2px solid #55ad9b;
-  border-radius: 30px;
-  width: 60%;
-}
-
 .name-loc {
   display: flex;
   flex-direction: row;
@@ -1071,13 +1032,13 @@ button[disabled] {
 }
 
 .pitch-pictures-edit {
-  height: 300px;
+  height: 400px;
   width: 100%;
   overflow: hidden;
 }
 
 .image-slide img {
-  height: 300px;
+  height: 400px;
 }
 
 .pitch-data {
@@ -1120,14 +1081,6 @@ button[disabled] {
 }
 
 /* editing */
-
-.first-portion {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-}
 
 .edit-ground-details-calender {
   display: flex;
@@ -1202,4 +1155,71 @@ button[disabled] {
   border-radius: 10px;
   margin-bottom: 5px;
   color: white;
+}
+
+
+/* New Editing */
+
+.email{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reservations{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.reservations-list{
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+}
+
+.img-name-edit {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  width: 50%;
+}
+
+.first-portion {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.revenue-data-specific {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  /* border-bottom: 2px solid #55ad9b; Removed border-bottom here */
+}
+
+.revenue-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  flex-grow: 1;
+  justify-content: space-evenly;
+}
+
+.edit-ground-details {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 2px solid #55ad9b;
+  border-radius: 30px;
 }

@@ -21,43 +21,82 @@ export default function Navbar(props) {
           <h1>{props.title}</h1>
         </div>
 
-        <SearchBar />
-        <div className="dropdown">
-          <button
-            className="dropdown btn-back"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <img src={prof_icon} alt="" />
-          </button>
-          <ul className="dropdown-menu dropdown-menu-end mt-2">
-            <li>
-              <div className="signup">
-                <Link
-                  to="./authpage"
-                  className="btn-sign"
-                  onClick={ChangeAuthSign}
-                >
-                  SignUp
-                </Link>
-              </div>
-            </li>
-            <li>
-              <hr className="dropdown-divider" />
-            </li>
-            <li>
-              <div className="logIn">
-                <Link
-                  to="./authpage"
-                  className="btn-log"
-                  onClick={ChangeAuthLog}
-                >
-                  Login
-                </Link>
-              </div>
-            </li>
-          </ul>
+        {location.pathname !== "/reservations" &&
+        location.pathname !== "/revenue_ground_details" &&
+        location.pathname !== "/help" &&
+        location.pathname !== "/authpage" &&
+        location.pathname !== "/authpage_owner" ? (
+          <>
+            <SearchBar />
+          </>
+        ) : null}
+
+        {location.pathname === "/authpage" ||
+        location.pathname === "/authpage_owner" ? (
+          <>
+            <div className="pages">
+              <a href="/">Home</a>
+              <a href="#contact">Contact</a>
+            </div>
+          </>
+        ) : null}
+
+        {location.pathname === "/reservations" ||
+        location.pathname === "/revenue_ground_details" ||
+        location.pathname === "/help" ? (
+          <>
+            <div className="pages">
+              <a href="/reservations">Reservations</a>
+              <a href="/revenue_ground_details">Ground Management</a>
+              <a href="/help">Help</a>
+            </div>
+          </>
+        ) : null}
+
+        <div className="button-owner-auth">
+          <div className="button-owner">
+            <Link to="./reservations" className="btn-owner custom-css">
+              Ground Owner
+            </Link>
+          </div>
+
+          <div className="dropdown">
+            <button
+              className="dropdown btn-back"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img src={prof_icon} alt="" />
+            </button>
+            <ul className="dropdown-menu dropdown-menu-end mt-2">
+              <li>
+                <div className="signup">
+                  <Link
+                    to="./authpage"
+                    className="btn-sign"
+                    onClick={ChangeAuthSign}
+                  >
+                    SignUp
+                  </Link>
+                </div>
+              </li>
+              <li>
+                <hr className="dropdown-divider" />
+              </li>
+              <li>
+                <div className="logIn">
+                  <Link
+                    to="./authpage"
+                    className="btn-log"
+                    onClick={ChangeAuthLog}
+                  >
+                    Login
+                  </Link>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </>
